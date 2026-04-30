@@ -1,0 +1,4 @@
+project_id = "nbuokrailfjiqgcrtkgk"
+
+[functions.ivr-webhook]
+verify_jwt = false

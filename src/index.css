@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Earth + sky palette — sustainability, hopeful */
+    --background: 44 38% 96%;
+    --foreground: 158 35% 12%;
+
+    --card: 44 50% 98%;
+    --card-foreground: 158 35% 12%;
+
+    --popover: 44 50% 98%;
+    --popover-foreground: 158 35% 12%;
+
+    --primary: 158 60% 22%;          /* deep forest */
+    --primary-foreground: 44 50% 98%;
+    --primary-glow: 152 55% 42%;
+
+    --secondary: 32 55% 88%;          /* warm sand */
+    --secondary-foreground: 158 35% 18%;
+
+    --muted: 40 25% 92%;
+    --muted-foreground: 158 12% 38%;
+
+    --accent: 198 75% 48%;            /* sky water */
+    --accent-foreground: 44 50% 98%;
+
+    --leaf: 142 55% 45%;
+    --water: 198 80% 52%;
+    --earth: 24 45% 48%;
+    --sun: 38 90% 60%;
+
+    --destructive: 0 70% 48%;
+    --destructive-foreground: 44 50% 98%;
+
+    --border: 40 22% 84%;
+    --input: 40 22% 88%;
+    --ring: 158 60% 22%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-hero: radial-gradient(ellipse at top left, hsl(152 55% 42% / 0.18), transparent 55%),
+                     radial-gradient(ellipse at bottom right, hsl(198 75% 48% / 0.15), transparent 55%),
+                     linear-gradient(180deg, hsl(44 50% 98%), hsl(44 38% 94%));
+    --gradient-leaf: linear-gradient(135deg, hsl(158 60% 22%), hsl(152 55% 42%));
+    --gradient-water: linear-gradient(135deg, hsl(198 75% 48%), hsl(188 70% 60%));
+    --gradient-earth: linear-gradient(135deg, hsl(24 45% 48%), hsl(38 70% 58%));
+
+    /* Shadows */
+    --shadow-soft: 0 1px 2px hsl(158 35% 12% / 0.04), 0 8px 24px -12px hsl(158 35% 12% / 0.12);
+    --shadow-elev: 0 8px 30px -8px hsl(158 60% 22% / 0.25);
+    --shadow-glow: 0 0 60px hsl(152 55% 42% / 0.35);
+
+    --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 158 30% 8%;
+    --foreground: 44 38% 96%;
+    --card: 158 28% 11%;
+    --card-foreground: 44 38% 96%;
+    --popover: 158 28% 11%;
+    --popover-foreground: 44 38% 96%;
+    --primary: 152 55% 55%;
+    --primary-foreground: 158 35% 8%;
+    --secondary: 158 25% 18%;
+    --secondary-foreground: 44 38% 96%;
+    --muted: 158 22% 16%;
+    --muted-foreground: 44 15% 70%;
+    --accent: 198 75% 55%;
+    --accent-foreground: 158 35% 8%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 44 38% 96%;
+    --border: 158 22% 20%;
+    --input: 158 22% 20%;
+    --ring: 152 55% 55%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Manrope', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-feature-settings: "ss01";
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .bg-hero { background: var(--gradient-hero); }
+  .bg-leaf { background: var(--gradient-leaf); }
+  .bg-water-grad { background: var(--gradient-water); }
+  .bg-earth-grad { background: var(--gradient-earth); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-elev { box-shadow: var(--shadow-elev); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .text-balance { text-wrap: balance; }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    80%, 100% { transform: scale(1.6); opacity: 0; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+  .animate-pulse-ring { animation: pulse-ring 2.4s cubic-bezier(0.4,0,0.6,1) infinite; }
+  .animate-fade-up { animation: fade-up 0.7s var(--transition-smooth) both; }
+}
